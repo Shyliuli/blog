@@ -1,5 +1,6 @@
 baseURL = "/"
 languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
 title = "我的博客"
 theme = "terminal"
 
