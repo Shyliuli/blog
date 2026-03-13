@@ -1,0 +1,17 @@
+{{ if .Params.categories }}
+  <span class="post-tags">
+    分类:
+    {{ range .Params.categories }}
+      <a href="{{ (urlize (printf "categories/%s/" .)) | absLangURL }}">{{ . }}</a>&nbsp;
+    {{ end }}
+  </span>
+{{ end }}
+
+{{ if .Params.series }}
+  <span class="post-tags">
+    系列:
+    {{ range .Params.series }}
+      <a href="{{ (urlize (printf "series/%s/" .)) | absLangURL }}">{{ . }}</a>&nbsp;
+    {{ end }}
+  </span>
+{{ end }}

@@ -1,0 +1,62 @@
+baseURL = "/"
+languageCode = "zh-cn"
+title = "我的博客"
+theme = "terminal"
+
+[pagination]
+  pagerSize = 5
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
+[markup.highlight]
+  noClasses = false
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[params]
+  contentTypeName = "posts"
+  showMenuItems = 2
+  showLanguageSelector = false
+  fullWidthTheme = false
+  centerTheme = true
+  autoCover = true
+  showLastUpdated = false
+
+[languages]
+  [languages."zh-cn"]
+    languageName = "中文"
+    title = "我的博客"
+
+    [languages."zh-cn".params]
+      subtitle = "记录代码、笔记和折腾"
+      owner = ""
+      keywords = ""
+      copyright = ""
+      menuMore = "更多"
+      readMore = "阅读全文"
+      readOtherPosts = "更多文章"
+      newerPosts = "更新的文章"
+      olderPosts = "更早的文章"
+      missingContentMessage = "页面不存在"
+      missingBackButtonLabel = "返回首页"
+      minuteReadingTime = "分钟阅读"
+      words = "字"
+
+      [languages."zh-cn".params.logo]
+        logoText = "我的博客"
+        logoHomeLink = "/"
+
+    [languages."zh-cn".menu]
+      [[languages."zh-cn".menu.main]]
+        identifier = "about"
+        name = "关于"
+        url = "/about"
+      [[languages."zh-cn".menu.main]]
+        identifier = "tags"
+        name = "标签"
+        url = "/tags"

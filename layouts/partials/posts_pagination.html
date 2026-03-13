@@ -1,0 +1,47 @@
+{{ $previousPage := false }}
+{{ $nextPage := false }}
+
+{{ if and .CurrentSection .CurrentSection.Params.seriesByWeight }}
+  {{ $pages := .CurrentSection.RegularPages.ByWeight }}
+  {{ $currentIndex := -1 }}
+
+  {{ range $index, $page := $pages }}
+    {{ if eq $page.RelPermalink $.RelPermalink }}
+      {{ $currentIndex = $index }}
+    {{ end }}
+  {{ end }}
+
+  {{ if ge $currentIndex 1 }}
+    {{ $previousPage = index $pages (sub $currentIndex 1) }}
+  {{ end }}
+  {{ if lt (add $currentIndex 1) (len $pages) }}
+    {{ $nextPage = index $pages (add $currentIndex 1) }}
+  {{ end }}
+{{ else }}
+  {{ $previousPage = .NextInSection }}
+  {{ $nextPage = .PrevInSection }}
+{{ end }}
+
+{{ if or $previousPage $nextPage }}
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">{{ $.Site.Params.ReadOtherPosts }}</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    {{ if $previousPage }}
+      <a href="{{ $previousPage.Permalink }}" class="button inline prev">
+        &lt; [<span class="button__text">{{ $previousPage.Title }}</span>]
+      </a>
+    {{ end }}
+    {{ if and $previousPage $nextPage }}
+      ::
+    {{ end }}
+    {{ if $nextPage }}
+      <a href="{{ $nextPage.Permalink }}" class="button inline next">
+         [<span class="button__text">{{ $nextPage.Title }}</span>] &gt;
+      </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
