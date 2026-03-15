@@ -41,7 +41,7 @@ body::before {
   z-index: -2;
   background:
     linear-gradient(135deg, var(--page-overlay-start), var(--page-overlay-end)),
-    url("/img/site-bg.webp") center / cover no-repeat;
+    url("img/site-bg.webp") center / cover no-repeat;
   background-attachment: fixed;
   transform: scale(1.03);
 }

@@ -50,7 +50,6 @@ theme = "terminal"
 
       [languages."zh-cn".params.logo]
         logoText = "我的博客"
-        logoHomeLink = "/"
 
     [languages."zh-cn".menu]
       [[languages."zh-cn".menu.main]]
