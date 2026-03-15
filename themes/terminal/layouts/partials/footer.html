@@ -13,11 +13,12 @@
 </footer>
 
 {{ $menu := resources.Get "js/menu.js" | js.Build }}
-{{ $cp := resources.Get "js/code.js" | js.Build }}
-
-{{ $bundle := slice $menu $cp | resources.Concat "bundle.js" | resources.Minify }}
+{{ $bundle := slice $menu | resources.Concat "bundle.js" | resources.Minify }}
 
 <script type="text/javascript" src="{{ $bundle.RelPermalink }}"></script>
+{{ if (fileExists "static/js/code.bundle.js") -}}
+  <script type="text/javascript" src="{{ "js/code.bundle.js" | absURL }}"></script>
+{{- end }}
 
 <!-- Extended footer section-->
 {{ partial "extended_footer.html" . }}

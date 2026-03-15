@@ -31,6 +31,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: themes/terminal/package-lock.json
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -54,6 +61,14 @@ jobs:
           key: hugo-${{ github.run_id }}
           restore-keys: |
             hugo-
+
+      - name: Install theme dependencies
+        working-directory: themes/terminal
+        run: npm ci
+
+      - name: Build Shiki bundle
+        working-directory: themes/terminal
+        run: npm run build:shiki
 
       - name: Build site
         run: |

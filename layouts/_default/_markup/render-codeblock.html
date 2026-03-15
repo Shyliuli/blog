@@ -1,0 +1,7 @@
+{{- $lang := or .Type "text" -}}
+{{- $code := trim .Inner "\n" -}}
+<div class="highlight code-block" data-lang="{{ $lang }}" data-shiki="pending">
+  <div class="highlight__body">
+    <pre class="shiki-source" tabindex="0"><code data-lang="{{ $lang }}">{{ $code | htmlEscape | safeHTML }}</code></pre>
+  </div>
+</div>
