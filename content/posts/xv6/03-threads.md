@@ -108,3 +108,11 @@ struct Context {
 ## Lab2 ph
 
 很简单，读的时候加锁即可。
+
+## Lab3 barrier
+
+我们增加了一个count全局变量
+
+只要count达到nthread，则清零并增加round，进行广播
+
+否则等待。
