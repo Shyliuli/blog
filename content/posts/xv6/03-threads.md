@@ -77,6 +77,7 @@ thread_switch:
 ```
 
 然后我们建立一样的Context结构:
+
 ```c
 struct Context {
   uint64 ra;
@@ -95,11 +96,15 @@ struct Context {
   uint64 s11;
 };
 ```
+
 并且在thread里加上它:
+
 ```c
   struct Context context;       /* saved registers */
 ```
 
 最后，我们只需要补全线程切换和初始化.线程切换直接传Context结构体指针即可，初始化则需要考虑将切换的”返回函数“设置为ra，并正确设置栈指针。
 
-## 未完待续
+## Lab2 ph
+
+很简单，读的时候加锁即可。
