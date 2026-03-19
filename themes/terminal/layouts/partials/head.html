@@ -20,11 +20,13 @@
 {{ end }}
 <!-- Custom Terminal.css styles -->
 {{ if (fileExists "static/terminal.css") -}}
-  <link rel="stylesheet" href="{{ "terminal.css" | absURL }}">
+  {{ $terminalVersion := readFile "static/terminal.css" | md5 }}
+  <link rel="stylesheet" href="{{ printf "%s?v=%s" ("terminal.css" | absURL) $terminalVersion | safeURL }}">
 {{- end }}
 <!-- Custom CSS to override theme properties (/static/style.css) -->
 {{ if (fileExists "static/style.css") -}}
-  <link rel="stylesheet" href="{{ "style.css" | absURL }}">
+  {{ $styleVersion := readFile "static/style.css" | md5 }}
+  <link rel="stylesheet" href="{{ printf "%s?v=%s" ("style.css" | absURL) $styleVersion | safeURL }}">
 {{- end }}
 
 <!-- Icons -->
